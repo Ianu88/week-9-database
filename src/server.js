@@ -1,12 +1,15 @@
 require("dotenv").config();
 const express = require("express");
 const exampleRouter =require("./middlewareExample.js");
-const User = require ("./users/model.js");
+const User = require ("./users/models.js");
+const userRouter = require("./users/routes.js")
 const port = process.env.PORT||5001;
 
 const app = express();
 
 app.use(express.json());
+
+app.use(userRouter)
 
 app.use(exampleRouter   )
 const syncTables = ()=>{
