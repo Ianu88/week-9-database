@@ -24,13 +24,13 @@ const comparePass = async(req,res,next)=>{
         // step1: find user with username(req.body.username?)
         const user = await User.findOne({ where: { username: req.body.username } });
         // step2: compare the plain text password with he hashed password on the db
+        const match = await bcrypt.compare(req.body.password, user.password);
         // i.e. bcrypt.compare() - will return true or false
-        
+        if(!match) { 
+            return res.status(401).json({message: "password incorrect, please try again"})
+        }
         // if false send send response "password does not match 
-        // if (){
-
-        // }
-        // if true, attach user to
+        req.user = user 
        next(); 
     } catch (error) {
         res.status(501).json({message: error.message, error: error})
