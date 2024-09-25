@@ -12,7 +12,7 @@ const funcOne = async(req, res, next) =>{
         return res.status(404).json({message: "incorrect password"})
     }
 
-    req.data ={ messageOne:"passowrd correct",
+    req.data ={ messageOne:"password correct",
     }
     next();
 };
