@@ -1,10 +1,11 @@
 const {Router} = require("express");
 const userRouter = Router();        
-const {hashPass} = require("../middleware/auth")
-const {addUser,login,getAllUsers} = require("./controllers")
-const{comparePass} = require("../middleware/auth")
+const {hashPass,comparePass} = require("../middleware/auth")
+const {addUser,login,getAllUsers,getUserByUsername} = require("./controllers")
 
-userRouter.get("/users/getAllUsers", getAllUsers);
+userRouter.get("/users/getallusers", getAllUsers);
+userRouter.get("/users/getuserbyusername/:username", getUserByUsername);
+
 
 userRouter.post("/users/signup", hashPass, addUser);
 
