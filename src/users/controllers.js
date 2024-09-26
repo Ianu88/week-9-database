@@ -7,7 +7,7 @@ const addUser = async(req,res)=>{
         password: req.body.password,
       });
 
-      res.status(201).json({message:"Success!", user:user})
+      res.status(201).json({message:"success", user:user})
     } catch (error) {
      res.status(501).json({message: error.message, error:error});
     }

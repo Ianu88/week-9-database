@@ -4,14 +4,17 @@ const exampleRouter =require("./middlewareExample.js");
 const User = require ("./users/models.js");
 const userRouter = require("./users/routes.js")
 const port = process.env.PORT||5001;
+const cors=require("cors")
 
 const app = express();
 
 app.use(express.json());
 
+app.use(cors());
+
 app.use(userRouter)
 
-app.use(exampleRouter   )
+app.use(exampleRouter)
 const syncTables = ()=>{
     User.sync();
 }
